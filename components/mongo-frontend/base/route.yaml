@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: mongo-frontend
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: mongo-frontend
+    app.kubernetes.io/part-of: mongo-db-example
+  name: mongo-frontend
+  namespace: aaaa-studio
+spec:
+  port:
+    targetPort: 8080
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: mongo-frontend
+    weight: 100
+status: {}
